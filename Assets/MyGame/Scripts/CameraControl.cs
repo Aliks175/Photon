@@ -3,10 +3,18 @@ using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+public class CameraControl : MonoBehaviourPunCallbacks
 {
     [SerializeField] private List<GameObject> _conectedCamera;
-    [SerializeField] private PhotonView _photonView;
+
+    private PhotonView _photonView;
+    private void Awake()
+    {
+        if(_photonView == null)
+        {
+            _photonView = GetComponentInChildren<PhotonView>();
+        }
+    }
 
     void Start()
     {
