@@ -11,8 +11,12 @@ namespace Photon2
     public class GameManager : MonoBehaviourPunCallbacks
     {
         #region Public Field
+        [Header("Spawn")]
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private GameObject _prefPlayer;
+        [SerializeField] private GameObject _prefPlayerStats;
+
+        [Space(30f)]
         [SerializeField] private GameObject _inventaryPool;
         [SerializeField] private Camera _camera;
 
@@ -21,6 +25,7 @@ namespace Photon2
 
 
         private GameObject _player;
+        private GameObject _playerStats;
         private PlayerCharecter playerCharecter;
         #endregion
 
@@ -74,6 +79,9 @@ namespace Photon2
                     playerCharecter.PlayerMoved.SetCamera(_camera);
                     OnEnterPlayer?.Invoke(_player);
                 }
+                _playerStats = PhotonNetwork.Instantiate(_prefPlayerStats.name, _player.transform.position, Quaternion.identity, 0);
+                
+                _playerStats.GetComponent<StatsOtherPlayer>().SetPlayer(playerCharecter);
             }
 
         }

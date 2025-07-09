@@ -26,7 +26,7 @@ public class CharacterData : MonoBehaviour, ICharacterData
         {
             if (_systemLevel == null)
             {
-                _systemLevel = new SystemLevel(_playerConfig.LevelLine, _playerConfig.ListUp, this);
+                _systemLevel = new SystemLevel(_playerConfig.LevelLine, this);
             }
             return _systemLevel;
         }
@@ -45,7 +45,7 @@ public class CharacterData : MonoBehaviour, ICharacterData
     public void Initialization()
     {
         PlayerHealth ??= new PlayerHealth(_playerConfig.StartHealthPlayer);
-        SystemLevel ??= new SystemLevel(_playerConfig.LevelLine, _playerConfig.ListUp, this);
+        SystemLevel ??= new SystemLevel(_playerConfig.LevelLine, this);
         _inventory = GetComponent<InventoryPlayer>();
 
         SetUp();

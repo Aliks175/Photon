@@ -21,8 +21,6 @@ public class InventoryPlayer : MonoBehaviour
 
     public void Initialization(ICharacterData characterData)
     {
-        Debug.LogError($"ICharacterData Null ? - {characterData == null} ");
-        
         // Здесь нужно будет что то придумать со списками 
         _characterData = characterData;
     }

@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SystemLevel
 {
     private CharacterData _characterData;
     private LevelLine _levelLine;
-    private List<ILevelUps> _listUp;
     public int Level { get { return _level; } private set { _level = value; } }
 
     private int _åxperience = 0;
@@ -18,10 +16,9 @@ public class SystemLevel
     public event Action<SystemLevelData> OnChangeExp;
     public event Action OnLevelUp;
 
-    public SystemLevel(LevelLine levelLine, List<ILevelUps> listUp, CharacterData characterData)
+    public SystemLevel(LevelLine levelLine, CharacterData characterData)
     {
         _levelLine = levelLine;
-        _listUp = listUp;
         _characterData = characterData;
     }
 
@@ -33,12 +30,9 @@ public class SystemLevel
         int Leveltemp = Mathf.FloorToInt(_levelLine.CurveLevel.Evaluate(_åxperience));
         if (Leveltemp > Level)
         {
-            for (; Level < Leveltemp; Level++)
+            while (Level < Leveltemp)
             {
-                foreach (var level in _listUp)
-                {
-                    level.LevelUp(_characterData);
-                }
+                Level++;
                 OnLevelUp?.Invoke();
             }
         }
@@ -52,7 +46,6 @@ public class SystemLevel
     {
         newExp = Mathf.Abs(newExp);
         _åxperience += newExp;
-
         CheckUpdateLevel();
         CalculateExp();
 

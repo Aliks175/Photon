@@ -92,7 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listAbility:
   - {fileID: -5067120929606160300}
-  - {fileID: 0}
   isDestroyForOver: 1
   _name: 2
 --- !u!114 &8501286882548578636

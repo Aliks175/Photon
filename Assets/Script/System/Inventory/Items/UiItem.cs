@@ -16,6 +16,8 @@ public class UiItem : MonoBehaviour, IUiItem, ICrafteble
         {
             foreach (var ability in _listAbility)
             {
+                if (ability == null) continue;
+
                 ability.Initialization(characterData);
             }
         }
@@ -27,7 +29,11 @@ public class UiItem : MonoBehaviour, IUiItem, ICrafteble
         {
             foreach (var ability in _listAbility)
             {
-                ability.UseAbility(_characterData);
+                if (ability == null) continue;
+                if (_characterData != null)
+                {
+                    ability.UseAbility(_characterData);
+                }
             }
         }
         if (isDestroyForOver) { Destroy(gameObject); }

@@ -6021,6 +6021,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1744427070}
     - target: {fileID: 2754499176010890976, guid: 9278d6500e3c6514face10cdadadbc1f, type: 3}
+      propertyPath: _prefPlayerStats
+      value: 
+      objectReference: {fileID: 8631657170913971042, guid: 2f00387d5df701949b2f64f4cee629e6, type: 3}
+    - target: {fileID: 2754499176010890976, guid: 9278d6500e3c6514face10cdadadbc1f, type: 3}
       propertyPath: OnEnterPlayer.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
